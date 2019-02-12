@@ -1,0 +1,22 @@
+@import "vars";
+@import "fonts";
+@import "libs";
+@import "media"; // Always at the end
+
+body {
+    font-family: $font-stack;
+    #logo {
+        width: 10rem;
+    }
+    .container {
+        img {
+            width: 20rem;
+            display: flex;
+            flex-flow: row wrap;
+
+            &::placeholder {
+              color: gray;
+            }
+        }
+    }
+}

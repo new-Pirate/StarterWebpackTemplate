@@ -1,0 +1,62 @@
+@import "_vars";
+
+//Media array mid
+@mixin respondMid ($media) {
+    @if $media == esFrom{
+        @media (max-width: #{$esTo}) {
+            @content;
+            }
+    }@else if $media == smFrom{
+        @media (min-width: #{$smFrom}) and (max-width: #{$smTo}) {
+            @content;
+            }
+    }@else if $media == mdFrom{
+        @media (min-width: #{$mdFrom}) and (max-width: #{$mdTo}) {
+            @content;
+            }
+    }@else if $media == lgFrom{
+        @media (min-width: #{$lgFrom}) and (max-width: #{$lgTo}) {
+            @content;
+            }
+    }@else if $media == xlFrom{
+        @media (min-width: #{$xlFrom}) {
+            @content;
+            }
+    }
+  }
+
+/********************************************************************/
+
+//Media min to infinity
+@mixin respondMax ($media) {
+    @if $media == esFrom{
+        @media (min-width: #{$esTo}) {
+            @content;
+            }
+    }@else if $media == smFrom{
+        @media (min-width: #{$smFrom}) {
+            @content;
+            }
+    }@else if $media == mdFrom{
+        @media (min-width: #{$mdFrom}) {
+            @content;
+            }
+    }@else if $media == lgFrom{
+        @media (min-width: #{$lgFrom}) {
+            @content;
+            }
+    }@else if $media == xlFrom{
+        @media (min-width: #{$xlFrom}) {
+            @content;
+            }
+    }
+  }
+
+/********************************************************************/
+
+//Media custom
+@mixin respondCustom($v1, $v2){
+    @media (min-width: #{$v1}) and (max-width: #{$v2}) {
+        @content;
+        }
+}
