@@ -1,9 +1,9 @@
 import jQuery from "jquery";
-import popper from "popper.js";
-import bootstrap from "bootstrap";
+import popper from "popper.js";       //for Bootstrap
+import bootstrap from "bootstrap";       //for Bootstrap
 
-jQuery(function() {
-  jQuery("body").css("color", "blue");
+jQuery(function($) {
+  $("body").css("color", "blue");
   console.log('11111111111111');
 });
 
