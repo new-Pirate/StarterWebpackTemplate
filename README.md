@@ -1,18 +1,29 @@
-├── dist                 - папка, куда будет собираться сайт  
-├─┬ src                  - папка с исходниками сайта  
-│  ├── favicon            - папка с файлами иконок для сайта  
-│  ├── fonts              - папка со шрифтами  
-│  ├─┬ html               - папка заготовок HTML страниц  
-│  │  ├── includes         - папка с встраиваемыми шаблонами (header, footer)  
-│  │  └── views            - папка с самими HTML страницами  
-│  ├── img                - папка с общими изображениями (логотип, иконки и др.)  
-│  ├── js                 - папка с JavaScript файлами  
-│  ├── scss               - папка с SСSS файлами  
-│  └── uploads            - папка с файлами статей (картинки, архивы и др.)  
-├── package.json         - файл настроек Node.js  
-└── webpack.config.js    - файл настроек Webpack  
+# static-site-webpack-habr
 
-Как пользоваться:
-- При запуске в командной строке строчки npm run dev произойдет сборка проекта (CSS, HTML, JS).
-- При запуске npm run start запустится локальный сервер, который запустит html страницу и также будет отслеживать изменения в файлах.
-- При запуске npm run build происходит итогова сборка.
+![Webpack](https://raw.githubusercontent.com/Harrix/static-site-webpack-habr/master/img/featured-image.png)
+
+Демонстрация сборки статического сайта с помощью `Webpack`.
+
+Статья [https://habr.com/post/350886/](https://habr.com/post/350886/).
+
+Дублирование статьи [article.md](https://github.com/Harrix/static-site-webpack-habr/blob/master/docs/article.md).
+
+Лицензия: [MIT](https://github.com/Harrix/static-site-webpack-habr/blob/master/LICENSE.md).
+
+## Использование
+
+1. Установите `Node.js`.
+
+2. Создайте папку, в которой будете создавать своей проект.
+
+3. В командной строке перейдите в эту папку.
+
+4. Скопируйте в папку файлы из данного проекта.
+
+## Контакты
+
+Автор: Сергиенко Антон Борисович.
+
+С автором можно связаться по адресу [sergienkoanton@mail.ru](mailto:sergienkoanton@mail.ru) или [http://vk.com/harrix](http://vk.com/harrix).
+
+Сайт автора, где публикуются последние новости: [http://blog.harrix.org](http://blog.harrix.org), а проекты располагаются по адресу: [http://harrix.org](http://harrix.org).

@@ -1,12 +1,12 @@
 const path = require("path");
 const fs = require("fs");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
-function generateHtmlPlugins(templateDir) {             //Осуществляет поиск всех HTML страниц
+function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
   return templateFiles.map(item => {
     const parts = item.split(".");
@@ -15,7 +15,7 @@ function generateHtmlPlugins(templateDir) {             //Осуществляе
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-      inject: false              //Команда отменяет самостоятельное встраиваение ссылок на js и css файл в HTML
+      inject: false
     });
   });
 }
@@ -23,52 +23,49 @@ function generateHtmlPlugins(templateDir) {             //Осуществляе
 const htmlPlugins = generateHtmlPlugins("./src/html/views");
 
 const config = {
-  entry: ["./src/js/index.js", "./src/scss/style.scss"],            //Входной скрипт js и scss или "точка входа"
+  entry: ["./src/js/index.js", "./src/scss/style.scss"],
   output: {
-    filename: "./js/bundle.js"            //Скрипт js на выходе или "точка выхода"
+    filename: "./js/bundle.js"
   },
-  devtool: "source-map",              //Создание карты исходников для js и css файлов
+  devtool: "source-map",
   mode: "production",
   optimization: {
     minimizer: [
-      new TerserPlugin({          //Плагин для минимизации js
+      new TerserPlugin({
         sourceMap: true,
-        extractComments: true           //Комментарии извлекаются в отдельный файл
+        extractComments: true
       })
     ]
   },
   module: {
-    rules: [            //rules для обработки конкретных файлов по конкретным правилам
+    rules: [
       {
-        test: /\.(sass|scss)$/,         //Все файлы с расширением sass|scss
-        include: path.resolve(__dirname, "src/scss"),           //Абсолютный путь к файлам с расширением scss
+        test: /\.(sass|scss)$/,
+        include: path.resolve(__dirname, "src/scss"),
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,          //Загрузчик минификатора CSS
+            loader: MiniCssExtractPlugin.loader,
             options: {}
           },
           {
-            loader: "css-loader",         //Плагин позволяющий хранить CSS внутри js-модуля
+            loader: "css-loader",
             options: {
-              sourceMap: true,            //Включение карт источников для css-loader
-              url: false          //Все ссылки на файлы в SCSS коде не трогаем, пути не меняем, никакие файлы не копируем и не встраиваем
+              sourceMap: true,
+              url: false
             }
           },
           {
-            loader: "postcss-loader",          //Postcss плагин
+            loader: "postcss-loader",
             options: {
               ident: "postcss",
-              sourceMap: true,          //Включение карт источников для postcss
+              sourceMap: true,
               plugins: () => [
-                require("autoprefixer")({         //Плагин Autoprefixer
-                  browsers: ['ie >= 11', 'last 3 version']         //Настройки Autoprefixer
-                }),
-                require("cssnano")({          //Плагин CSS-nano
+                require("cssnano")({
                   preset: [
                     "default",
                     {
                       discardComments: {
-                        removeAll: true           //Удаление комментариев в конечных файлах
+                        removeAll: true
                       }
                     }
                   ]
@@ -77,60 +74,48 @@ const config = {
             }
           },
           {
-            loader: "sass-loader",          //Компилирует Sass в CSS
+            loader: "sass-loader",
             options: {
-              sourceMap: true             //Включение карт источников для sass-loader
+              sourceMap: true
             }
           }
         ]
       },
       {
-        test: /\.html$/,           //Все файлы с расширением html
-        include: path.resolve(__dirname, "src/html/includes"),        //Абсолютный путь к hmtl файлам
-        use: ["raw-loader"]             //Плагин загружает html как текст
-      },
-      {
-        test: /\.js$/,
-        include: path.resolve(__dirname, 'src/js'),
-        use: {
-          loader: "babel-loader",           //Прогоняет все файлы js через Babel
-          options: {
-            presets: [
-              "@babel/preset-env"
-            ]
-          }
-        }
+        test: /\.html$/,
+        include: path.resolve(__dirname, "src/html/includes"),
+        use: ["raw-loader"]
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "./css/style.bundle.css"           //Файл css на выходе или "точка выхода"
+      filename: "./css/style.bundle.css"
     }),
-    new CopyWebpackPlugin([            //Плагин который просто копирует файлы
+    new CopyWebpackPlugin([
       {
-        from: "./src/fonts",            //Подтягивает шрифты
+        from: "./src/fonts",
         to: "./fonts"
       },
       {
-        from: "./src/favicon",              //Подтягивает иконки сайта
+        from: "./src/favicon",
         to: "./favicon"
       },
       {
-        from: "./src/img",              //Подтягивает общие изображения
+        from: "./src/img",
         to: "./img"
       },
       {
-        from: "./src/uploads",          //Подтягивает изображения всяких статей, постов
+        from: "./src/uploads",
         to: "./uploads"
       }
     ])
-  ].concat(htmlPlugins)         //Слияние HTML файлов
+  ].concat(htmlPlugins)
 };
 
 module.exports = (env, argv) => {
   if (argv.mode === "production") {
-    config.plugins.push(new CleanWebpackPlugin("dist"));        //Плагин очищающий папку dist перед каждой сборкой проекта
+    config.plugins.push(new CleanWebpackPlugin());
   }
   return config;
 };
