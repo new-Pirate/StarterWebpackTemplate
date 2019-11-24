@@ -2,32 +2,15 @@ const path = require("path");
 const fs = require("fs");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-
-function generateHtmlPlugins(templateDir) {
-  const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
-  return templateFiles.map(item => {
-    const parts = item.split(".");
-    const name = parts[0];
-    const extension = parts[1];
-    return new HtmlWebpackPlugin({
-      filename: `${name}.html`,
-      template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-      inject: false
-    });
-  });
-}
-
-const htmlPlugins = generateHtmlPlugins("./src/html/views");
 
 const config = {
   entry: ["./src/js/index.js", "./src/scss/style.scss"],
   output: {
-    filename: "./js/bundle.js"
+    filename: "./js/script.js"
   },
-  devtool: "source-map",
+  // devtool: "source-map",     карты исходников для js и css файлов
   mode: "production",
   optimization: {
     minimizer: [
@@ -80,17 +63,12 @@ const config = {
             }
           }
         ]
-      },
-      {
-        test: /\.html$/,
-        include: path.resolve(__dirname, "src/html/includes"),
-        use: ["raw-loader"]
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "./css/style.bundle.css"
+      filename: "./css/style.css"
     }),
     new CopyWebpackPlugin([
       {
@@ -106,11 +84,11 @@ const config = {
         to: "./img"
       },
       {
-        from: "./src/uploads",
-        to: "./uploads"
+        from: "./src/index.html",
+        to: "./"
       }
     ])
-  ].concat(htmlPlugins)
+  ]
 };
 
 module.exports = (env, argv) => {

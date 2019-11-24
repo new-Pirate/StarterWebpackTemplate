@@ -3,22 +3,127 @@
 @import "libs";
 @import "media"; // Always at the end
 
+/* Шрифты */
 
 @font-face {
   font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  src: url(../fonts/Roboto-Regular.ttf);
+  src: url("../fonts/Roboto-Regular.ttf");
 }
 
-body {
-  font-family: $font-stack;
-  #logo {
-    width: 10rem;
-  }
-  .container {
-    img {
-      width: 20rem;
-    }
-  }
+/* Цветовые темы */
+
+:root[theme='white'] {
+  --normal-color-text: #979797;
+  --normal-color-text-enter: #000000;
+  --normal-color-placeholder: #BEBEBE;
+  --normal-color-background: #FFFFFF;
+  --normal-color-img: #585858;
+  --normal-color-border: #DADADA;
+  --error-color-text: #E60028;
+  --error-color-message: #000000;
+}
+
+:root[theme='black'] {
+  --normal-color-text: #DADADA;
+  --normal-color-text-enter: #FFFFFF;
+  --normal-color-placeholder: #979797;
+  --normal-color-background: #2D2A2A;
+  --normal-color-img: #DADADA;
+  --normal-color-border: #979797;
+  --error-color-text: #DF2949;
+  --error-color-message: #FFFFFF;
+}
+
+/* Стили */
+
+.form {
+  font-family: "Roboto";
+  padding: 0 16px;
+  margin-bottom: 20px;
+  background-color: var(--normal-color-background);
+}
+
+.form-tel {}
+
+.form-tel-label {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--normal-color-text);
+}
+
+.form-tel-field {
+  position: relative;
+  min-height: 53px;
+  margin-top: 12px;
+}
+
+.form-tel-name {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  color: var(--normal-color-text);
+  background-color: var(--normal-color-background);
+  position: absolute;
+  z-index: 2;
+  left: 12px;
+  top: -10px;
+  padding: 4px;
+  display: none;
+}
+
+.form-tel-input {
+  border: 1px solid var(--normal-color-border);
+  background-color: var(--normal-color-background);
+  box-sizing: border-box;
+  border-radius: 24px;
+  width: 100%;
+  padding: 14px 40px 14px 16px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: var(--normal-color-text-enter);
+  font-family: "Roboto";
+  position: absolute;
+  z-index: 1;
+  outline: none;
+}
+
+.form-tel-input::placeholder {
+  color: var(--normal-color-placeholder);
+  font-size: 13px;
+  font-family: "Roboto";
+}
+
+.form-tel-btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--normal-color-border);
+  border-radius: 50%;
+  background-color: var(--normal-color-background);
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  outline: none;
+  cursor: pointer;
+}
+
+.form-tel-btn-img {
+  fill: var(--normal-color-img);
+  stroke: var(--normal-color-img);
+}
+
+.form-tel-error {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  text-align: center;
+  color: var(--normal-color-text);
+  margin-top: 8px;
+  line-height: 16px;
 }
