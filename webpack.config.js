@@ -1,5 +1,4 @@
 const path = require("path");
-const fs = require("fs");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -43,6 +42,7 @@ const config = {
               ident: "postcss",
               sourceMap: true,
               plugins: () => [
+                require('autoprefixer'),
                 require("cssnano")({
                   preset: [
                     "default",
@@ -52,7 +52,7 @@ const config = {
                       }
                     }
                   ]
-                })
+                }),
               ]
             }
           },
