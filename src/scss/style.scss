@@ -1,7 +1,7 @@
-@import "vars";
+// @import "vars";
 @import "fonts";
 @import "libs";
-@import "media"; // Always at the end
+// @import "media"; // Always at the end
 
 /* Шрифты */
 
@@ -41,89 +41,103 @@
   padding: 0 16px;
   margin-bottom: 20px;
   background-color: var(--normal-color-background);
+
+  &-tel {}
+
+  &-tel-label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--normal-color-text);
+  }
+
+  &-tel-field {
+    position: relative;
+    min-height: 53px;
+    margin-top: 12px;
+  }
+
+  &-tel-name {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    color: var(--normal-color-text);
+    background-color: var(--normal-color-background);
+    position: absolute;
+    z-index: 2;
+    left: 12px;
+    top: -10px;
+    padding: 4px;
+    display: none;
+  }
+
+  &-tel-input {
+    border: 1px solid var(--normal-color-border);
+    background-color: var(--normal-color-background);
+    box-sizing: border-box;
+    border-radius: 24px;
+    width: 100%;
+    padding: 14px 40px 14px 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: var(--normal-color-text-enter);
+    font-family: "Roboto";
+    position: absolute;
+    z-index: 1;
+    outline: none;
+    box-shadow: none;
+  }
+
+  &-tel-input::placeholder {
+    color: var(--normal-color-placeholder);
+    font-size: 13px;
+    font-family: "Roboto";
+  }
+
+  &-tel-btn {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--normal-color-border);
+    border-radius: 50%;
+    background-color: var(--normal-color-background);
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    outline: none;
+    cursor: pointer;
+  }
+
+  &-tel-btn-img {
+    fill: var(--normal-color-img);
+    stroke: var(--normal-color-img);
+  }
+
+  &-tel-error {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    text-align: center;
+    color: var(--normal-color-text);
+    margin-top: 8px;
+    line-height: 16px;
+  }
+
+  .error-input {
+    color: var(--error-color-text);
+  }
+  
+  .error-input::placeholder {
+    color: var(--error-color-text);
+  }
+  
+  .error-text {
+    color: var(--error-color-message);
+  }
 }
 
-.form-tel {}
-
-.form-tel-label {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  text-transform: uppercase;
-  color: var(--normal-color-text);
-}
-
-.form-tel-field {
-  position: relative;
-  min-height: 53px;
-  margin-top: 12px;
-}
-
-.form-tel-name {
-  font-size: 14px;
-  font-style: normal;
-  font-weight: normal;
-  color: var(--normal-color-text);
-  background-color: var(--normal-color-background);
-  position: absolute;
-  z-index: 2;
-  left: 12px;
-  top: -10px;
-  padding: 4px;
-  display: none;
-}
-
-.form-tel-input {
-  border: 1px solid var(--normal-color-border);
-  background-color: var(--normal-color-background);
-  box-sizing: border-box;
-  border-radius: 24px;
-  width: 100%;
-  padding: 14px 40px 14px 16px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  color: var(--normal-color-text-enter);
-  font-family: "Roboto";
-  position: absolute;
-  z-index: 1;
-  outline: none;
-}
-
-.form-tel-input::placeholder {
-  color: var(--normal-color-placeholder);
-  font-size: 13px;
-  font-family: "Roboto";
-}
-
-.form-tel-btn {
-  width: 48px;
-  height: 48px;
-  border: 1px solid var(--normal-color-border);
-  border-radius: 50%;
-  background-color: var(--normal-color-background);
-  position: absolute;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  outline: none;
-  cursor: pointer;
-}
-
-.form-tel-btn-img {
-  fill: var(--normal-color-img);
-  stroke: var(--normal-color-img);
-}
-
-.form-tel-error {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 13px;
-  text-align: center;
-  color: var(--normal-color-text);
-  margin-top: 8px;
-  line-height: 16px;
-}

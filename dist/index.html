@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" theme="white">
+<html lang="en" theme="black">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <link rel="shortcut icon" href="favicon/favicon.ico" />
-    <link rel="stylesheet" href="css/style.css" />
-
     <title>Docyment</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js"></script>
   </head>
 
   <body>
@@ -17,8 +15,8 @@
         <label class="form-tel-label">Телефон</label>
         <div class="form-tel-field">
           <p class="form-tel-name">Айфван Уточкин</p>
-          <input class="form-tel-input" placeholder="+7 (___) ___-__-__" required />
-          <button class="form-tel-btn">
+          <input class="form-tel-input" placeholder="+7 (___) ___-__-__" />
+          <button type="button" class="form-tel-btn">
             <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 class="form-tel-btn-img"
@@ -45,12 +43,11 @@
             </svg>
           </button>
         </div>
+        <button>Отправить</button>
       </div>
       <div class="form-tel-error">
         Введите номер телефона вручную или выберите контакт из телефонной книги смартфона
       </div>
     </form>
-
-    <script src="js/script.js"></script>
   </body>
 </html>
