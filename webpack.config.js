@@ -12,12 +12,7 @@ const config = {
   // devtool: "source-map",     карты исходников для js и css файлов
   mode: "production",
   optimization: {
-    minimizer: [
-      new TerserPlugin({
-        sourceMap: true,
-        extractComments: true
-      })
-    ]
+    minimize: false
   },
   module: {
     rules: [
