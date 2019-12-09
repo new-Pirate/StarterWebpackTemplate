@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
-  entry: ["./src/js/index.js", "./src/scss/style.scss"],
+  entry: ["./src/js/script.js", "./src/scss/style.scss"],
   output: {
     filename: "./js/script.js"
   },
